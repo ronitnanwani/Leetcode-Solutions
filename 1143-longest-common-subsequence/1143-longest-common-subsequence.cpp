@@ -6,8 +6,10 @@ public:
             return 0;
         if(dp[idx1][idx2]!=-1)
             return dp[idx1][idx2];
-        
-            return dp[idx1][idx2]=max(func(s1,s2,idx1-1,idx2-1)+(s1[idx1]==s2[idx2]),max(func(s1,s2,idx1-1,idx2),func(s1,s2,idx1,idx2-1)));
+        if(s1[idx1]!=s2[idx2])
+            return (dp[idx1][idx2]=max(func(s1,s2,idx1-1,idx2),func(s1,s2,idx1,idx2-1)));
+        else
+            return (dp[idx1][idx2]=1+func(s1,s2,idx1-1,idx2-1));
         
     }
     int longestCommonSubsequence(string text1, string text2) {
